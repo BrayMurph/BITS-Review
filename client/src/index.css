@@ -1,0 +1,42 @@
+.custom-heading {
+    font-size: 36px; 
+    font-weight: bold;
+    color: #ff0000; 
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+  
+  
+  .game-poster {
+    background-color: #fff; 
+    border: 2px solid #ccc;
+    padding: 20px; 
+    margin: 20px 0; 
+    text-align: center; 
+  }
+  
+  
+  .game-title {
+    font-size: 24px; 
+    font-weight: bold;
+    margin-top: 10px; 
+  }
+  
+ 
+  .game-description {
+    font-size: 16px;
+    margin-top: 10px; 
+  }
+  
+  
+  .btn-primary {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    font-weight: bold; 
+    margin-top: 20px; 
+  }
+  
+  
+  .btn-primary:hover {
+    background-color: #cc0000; 
+  }
