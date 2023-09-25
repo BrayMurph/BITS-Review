@@ -1,5 +1,4 @@
-# Game Review Website
-
+# BITS REVIEW
 Welcome to the Game Review Website, a MERN-stack single-page application designed to provide game enthusiasts with a platform to discover and review their favorite games.
 
 ## Table of Contents
