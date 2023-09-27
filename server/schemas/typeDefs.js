@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   # Define your types here
@@ -13,7 +13,7 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
-    avg_score: INT
+    avg_score: Int
     messages: String
     game_name: String
     comment: [Comment]
@@ -21,7 +21,7 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    score: INT
+    score: Int
     message: String
   }
 
