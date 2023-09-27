@@ -1,13 +1,28 @@
 // Import necessary dependencies
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { ADD_USER } from '../utils/mutations';
 import './Signup.css'; // Import your CSS file for styling
 
 // Create the Signup Component
-function Signup() {
+function Signup(props) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email
+      }
+    })
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

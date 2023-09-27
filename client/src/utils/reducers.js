@@ -6,7 +6,7 @@ REMOVE_COMMENT,
 } from "./actions";
 
 export const reducer = (state, action) => {
-
+    
 };
 
 export function usePostReducer(initialState) {
