@@ -6,7 +6,7 @@ body, h1, h2, p {
 
 /* Style the header */
 header {
-  background-color: #007bff;
+  background-color: #111;
   color: white;
   text-align: center;
   padding: 1rem;
@@ -14,34 +14,30 @@ header {
 
 /* Style the main content */
 main {
-  max-width: 800px;
-  margin: 0 auto;
+  background-color: #222;
   padding: 20px;
 }
 
 /* Style each game section */
 .game {
-  margin-bottom: 20px;
-  display: flex;
-  border: 1px solid #ddd;
-  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Style the game poster */
 .game-poster {
-  flex: 1;
-  max-width: 150px;
-  margin-right: 20px;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  padding: 20px;
-  margin: 20px 0;
+  max-width: 100%; /* Make posters responsive within their containers */
+  padding: 10px;
   text-align: center;
+  overflow: hidden;
 }
 
 /* Style game information */
 .game-info {
-  flex: 2;
+  padding: 20px;
+  color: white;
 }
 
 /* Style game title */
@@ -56,6 +52,8 @@ main {
   margin-top: 10px;
   cursor: pointer;
   font-weight: bold;
+  color: #007bff;
+  text-decoration: underline;
 }
 
 /* Change the color when hovered */
@@ -77,6 +75,12 @@ main {
   border-color: #ff0000;
   font-weight: bold;
   margin-top: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
@@ -87,21 +91,20 @@ main {
 @media screen and (max-width: 768px) {
   /* Adjust styles for screens up to 768px wide */
   main {
-      padding: 10px;
+    padding: 10px;
   }
-  
+
   .game-poster {
-      max-width: 100px;
-      margin-right: 10px;
+    max-width: 100%;
   }
-  
+
   .game-info h2 {
-      font-size: 20px;
+    font-size: 20px;
   }
-  
+
   .custom-heading {
-      font-size: 24px;
-      margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 }
 
@@ -109,5 +112,6 @@ main {
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #111;
+  color: white;
 }
