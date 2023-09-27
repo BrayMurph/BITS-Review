@@ -4,47 +4,45 @@ const typeDefs = gql`
   # Define your types here
 
   type User {
-    id: INT
-    comment: [comment]
+    _id: ID
+    comment: [Comment]
     username: String
     email: String
     password: String
   }
 
   type Post {
-    id: INT
+    _id: ID
     avg_score: INT
     messages: String
     game_name: String
-    comment_id: INT
-    comment: [commentt]
+    comment: [Comment]
   }
 
   type Comment {
-    id: INT
+    _id: ID
     score: INT
     message: String
-    reviewer_id: String
+  }
+
+  type Auth {
+    token: ID
+    user: User
   }
 
   # Define your queries here
 
   type Query {
-    users: [User!]!
-    user(id: ID!): User
-    posts: [Post!]!
-    post(id: ID!): Post
+    user: User
+    
   }
 
   # Define your mutations here
 
   type Mutation {
-    createUser(username: String!, email: String!): User!
-    updateUser(id: ID!, username: String, email: String): User!
-    deleteUser(id: ID!): Boolean
-    createPost(title: String!, body: String!, authorId: ID!): Post!
-    updatePost(id: ID!, title: String, body: String): Post!
-    deletePost(id: ID!): Boolean
+    addUser(username: String!, email: String!, password: String!): Auth
+    updateUser(username: String, email: String, password: String): User
+    login(username: String!, password: String!): Auth
   }
 `;
 

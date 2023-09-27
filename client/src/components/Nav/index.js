@@ -1,24 +1,56 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ApolloClient from './config/apollo'; // Your Apollo Client setup
-import './index.css'; // Your global CSS file
-import App from './components/App'; // Your main App component
+import React from "react";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql', // Replace with your GraphQL server URL
-});
+function Nav() {
+  
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+       <ul className="flex-row">
+          <li className="mx-1">
+           <Link to="/profile">
+             Profile
+           </Link>
+         </li>
+         <li className="mx-1">
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          </li>
+       </ul>
+      );
+   } else {
+      return (
+       <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/signup">
+             Signup
+           </Link>
+          </li>
+          <li className="mx-1">
+           <Link to="/login">
+              Login
+           </Link>
+          </li>
+       </ul>
+    );
+  }
+}
 
-const rootElement = document.getElementById('root');
+  return (
+    <header>
+      <h1>
+        <Link to="/">
+          BITS Review
+        </Link>
+      </h1>
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-      </Switch>
-    </Router>
-  </ApolloProvider>,
-  rootElement
-);
+      <nav>
+        {showNavigation()}
+      </nav>
+    </header>
+  );
+}
+
+export default Nav;
