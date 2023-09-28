@@ -34,12 +34,17 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    
+    post(_id: ID!): Post
+    comment(_id: ID!): Comment
+    posts(): [Post]
+    comments(): [Comment]
   }
 
   # Define your mutations here
 
   type Mutation {
+    addComment(post: _id!, score: Int! , message: String!): Comment
+    updateComment(comment: _id, score: Int, message: String): Comment
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(username: String!, password: String!): Auth
