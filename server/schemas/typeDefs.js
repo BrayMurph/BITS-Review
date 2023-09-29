@@ -15,6 +15,7 @@ const typeDefs = gql`
     _id: ID
     avg_score: Int
     messages: String
+    image: String
     game_name: String
     comment: [Comment]
   }
@@ -36,17 +37,15 @@ const typeDefs = gql`
     user: User
     post(_id: ID!): Post
     comment(_id: ID!): Comment
-    posts(): [Post]
-    comments(): [Comment]
+    posts: [Post]
+    comments(post: ID!): [Comment]
   }
 
   # Define your mutations here
 
   type Mutation {
-    addComment(post: _id!, score: Int! , message: String!): Comment
-    updateComment(comment: _id, score: Int, message: String): Comment
+    addComment(post: ID!, score: Int! , message: String!): Comment
     addUser(username: String!, email: String!, password: String!): Auth
-    updateUser(username: String, email: String, password: String): User
     login(username: String!, password: String!): Auth
   }
 `;

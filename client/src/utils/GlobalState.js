@@ -1,18 +1,18 @@
 import React, { createContext, useContext } from 'react';
-import { useAccountReducer } from './reducers';
+import { usePostReducer } from './reducers';
 
-const AccountContext = createContext();
-const { Provider } = AccountContext;
+const PostContext = createContext();
+const { Provider } = PostContext;
 
-const AccountProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useAccountReducer({
-    isLoggedIn: false,
-    userName: 'admin',
+const PostProvider = ({ value = [], ...props }) => {
+  const [state, dispatch] = usePostReducer({
+    post: [],
+    comment: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useAccountContext = () => useContext(AccountContext);
+const usePostContext = () => useContext(PostContext);
 
-export { AccountProvider, useAccountContext };
+export { PostProvider, usePostContext };
