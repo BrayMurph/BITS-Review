@@ -1,12 +1,19 @@
 import { useReducer } from "react";
 import {
-ADD_COMMENT,
-UPDATE_COMMENT,
-REMOVE_COMMENT,
+LOAD_POST,
 } from "./actions";
 
 export const reducer = (state, action) => {
-    
+    switch(action.type) {
+        case LOAD_POST:
+            return {
+                ...state,
+                post: [...action.post],
+            };
+            
+        default: 
+            return state;
+    }
 };
 
 export function usePostReducer(initialState) {

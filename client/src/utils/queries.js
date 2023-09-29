@@ -11,4 +11,20 @@ export const QUERY_USER = gql`
             }
         }
     }
-`
+`;
+
+export const QUERY_POST = gql`
+    
+`;
+
+export const QUERY_COMMENT = gql`
+
+`;
+
+export const QUERY_ALL_POSTS = gql`
+
+`;
+
+export const QUERY_ALL_COMMENTS = gql`
+
+`;
