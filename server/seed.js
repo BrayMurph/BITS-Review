@@ -1,40 +1,43 @@
-// Import necessary dependencies
+// seed.js
 const mongoose = require('mongoose');
 const Game = require('./models/Game'); // Import your Mongoose model for games
+const cheerio = require('cheerio'); // Require cheerio for parsing HTML
+const fs = require('fs');
 
-// Connect to your MongoDB database (adjust the connection string)
 mongoose.connect('mongodb://localhost/your-database-name', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-// Define your seed data (replace with your actual data)
-const seedData = [
-  {
-    title: 'Game 1',
-    description: 'Description for Game 1',
-    rating: 4.5,
-    platform: 'PlayStation 5',
-    // Add more fields and data as needed
-  },
-  {
-    title: 'Game 2',
-    description: 'Description for Game 2',
-    rating: 4.0,
-    platform: 'Xbox Series X',
-    // Add more fields and data as needed
-  },
-  // Add more data entries as needed
-];
-
-// Function to seed the database with the provided data
 async function seedDatabase() {
   try {
-    // Remove existing game data (optional, based on your needs)
+    // Read index.html file 
+    const html = fs.readFileSync('index.html', 'utf8');
+    const $ = cheerio.load(html);
+
+    // Extract game data from the HTML
+    const gameData = [];
+
+    $('.game').each((index, element) => {
+      const title = $(element).find('h2').text();
+      const description = $(element).find('.game-review p').text();
+      const releaseDate = $(element).find('p:contains("Release Date:")').text().replace('Release Date:', '').trim();
+
+      
+
+      gameData.push({
+        title,
+        description,
+        releaseDate,
+        
+      });
+    });
+
+    // Remove existing game data 
     await Game.deleteMany();
 
     // Seed the database with new game data
-    await Game.insertMany(seedData);
+    await Game.insertMany(gameData);
 
     console.log('Database seeded successfully');
   } catch (error) {
@@ -47,4 +50,3 @@ async function seedDatabase() {
 
 // Run the seed function
 seedDatabase();
-
