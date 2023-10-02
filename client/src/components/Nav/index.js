@@ -8,16 +8,16 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
        <ul className="flex-row">
-          <li className="mx-1">
+          <ul className="mx-1">
            <Link to="/profile">
              Profile
            </Link>
-         </li>
-         <li className="mx-1">
+         </ul>
+         <ul className="mx-1">
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
-          </li>
+          </ul>
        </ul>
       );
    } else {

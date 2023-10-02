@@ -13,16 +13,33 @@ function PostItem(item) {
     } = item;
 
     return (
-        <div className="card px-1 py-1">
-            <Link to={`/post/${_id}`}>
-                <img className="game-poster"
+
+        
+        <div class="container">
+           <div class="row">
+
+            <div class="col-md-6">
+                <section class="game bg-light p-3">
+                    <div class="game-poster">
+                <img class="img-fluid"
                     alt={game_name}
                     src={`/images/${image}`}
                 />
-                <p>{game_name}</p>
+                </div>
+                <div class="game-info">
+                <h2>{game_name}</h2>
                 <p>{messages}</p>
-                <a>{avg_score}</a>
-            </Link>
+                <a>Score: {avg_score}</a>
+                <div class="submit-review">
+           <Link to={`/post/${_id}`}> Leave a Review </Link> 
+           </div>
+           </div>
+           
+           </section>
+            </div>
+          
+           </div>
+          
         </div>
     );
 }
