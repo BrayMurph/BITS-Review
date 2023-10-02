@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PostItem from "../PostItem";
 import { usePostContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
-import { QUERY_POST } from "../../utils/queries";
+import { QUERY_ALL_POSTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { LOAD_POST } from "../../utils/actions";
 
@@ -13,7 +13,7 @@ function PostList() {
 
     const { currentPost } = state;
 
-    const { loading, data } = useQuery(QUERY_POST);
+    const { loading, data } = useQuery(QUERY_ALL_POSTS);
 
     useEffect(() => {
         if (data) {
@@ -43,10 +43,10 @@ function PostList() {
             (post) => post._id === currentPost
         );
     }
-
+    
     return (
         <div className="my-2">
-            {state.posts ? (
+            {state.posts.length ? (
                <div className="flex-row">
                 {filterPosts().map((post) => (
                     <PostItem 

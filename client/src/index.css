@@ -28,7 +28,7 @@ main {
 
 /* Style the game poster */
 .game-poster {
-  max-width: 100%; /* Make posters responsive within their containers */
+  max-width: 50%; /* Make posters responsive within their containers */
   padding: 10px;
   text-align: center;
   overflow: hidden;
