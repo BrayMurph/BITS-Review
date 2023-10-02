@@ -2,25 +2,30 @@ const { User, Post, Comment } = require('../models');
 const {signToken} = require ('../utils/auth')
 const resolvers = {
   Query: {
-    user: async (_, { id }) => {
+    user: async (_, { _id }) => {
       try {
-        const user = await User.findByPk(id);
+        const user = await User.findByPk(_id);
         return user;
       } catch (error) {
         throw new Error(error.message);
       }
     },
-    posts: async () => {
+    posts: async (_, { comments }) => {
       try {
-        const post = await Post.findAll();
-        return post;
+        const params = {};
+
+        if (comments) {
+          params.comments = comments;
+        }
+        
+        return await Post.find(params).populate('comments');
       } catch (error) {
         throw new Error(error.message);
       }
     },
-    post: async (_, { id }) => {
+    post: async (_, { _id }) => {
       try {
-        const post = await Post.findByPk(id);
+        const post = await Post.findByPk(_id);
         return post;
       } catch (error) {
         throw new Error(error.message);
@@ -48,6 +53,23 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
+    login: async (_, { username, password }) => {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user};
+    }
   }
 };
 

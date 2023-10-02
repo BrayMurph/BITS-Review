@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import '../../index.css'; 
 
 
 function PostItem(item) {
@@ -15,7 +15,7 @@ function PostItem(item) {
     return (
         <div className="card px-1 py-1">
             <Link to={`/post/${_id}`}>
-                <img 
+                <img className="game-poster"
                     alt={game_name}
                     src={`/images/${image}`}
                 />

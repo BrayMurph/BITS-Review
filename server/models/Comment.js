@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const { Schema }  = mongoose;
 
 // Define the Comment schema
 const commentSchema = new Schema({

@@ -6,8 +6,8 @@ const { Provider } = PostContext;
 
 const PostProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = usePostReducer({
-    post: [],
-    comment: [],
+    posts: [],
+    comments: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
