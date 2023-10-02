@@ -31,5 +31,17 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COMMENT = gql`
-    
+    mutation addComment(
+        $post: ID!
+        $score: Int!
+        $message: String!
+    ) {
+        addComment(
+            post: $post
+            score: $score
+            message: $message
+      ) {
+            _id
+      }
+  }
 `;

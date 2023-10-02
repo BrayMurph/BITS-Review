@@ -14,6 +14,7 @@ import Login from './pages/login';
 import Signup from "./pages/signup";
 import Profile from './pages/profilepage';
 import Nav from "./components/Nav";
+import { PostProvider } from "./utils/GlobalState";
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -39,6 +40,7 @@ function App() {
         <ApolloProvider client={client}>
             <Router>
                 <div>
+                    <PostProvider>
                     <Nav />
                     <Routes>
                         <Route 
@@ -62,6 +64,7 @@ function App() {
                             element={<GamePost />}
                         /> */}
                     </Routes>
+                    </PostProvider>
                 </div>
             </Router>
         </ApolloProvider>

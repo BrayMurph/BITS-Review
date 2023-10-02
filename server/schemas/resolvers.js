@@ -48,16 +48,6 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
-    addPost: async (parent, args) => {
-      try {
-        const post = await Post.create(args);
-        console.log(post)
-        return post;
-      } catch (error) {
-        console.log(error)
-        throw new Error(error.message);
-      }
-    }
   }
 };
 
