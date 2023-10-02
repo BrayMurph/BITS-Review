@@ -25,7 +25,7 @@ function PostList() {
                 idbPromise('posts', 'put', post);
             });
         } else if (!loading) {
-            idbPromise('posts', 'get').then((post) => {
+            idbPromise('posts', 'get').then((posts) => {
                 dispatch({
                     type: LOAD_POST,
                     posts: posts,
