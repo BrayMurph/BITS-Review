@@ -46,7 +46,7 @@ function PostList() {
 
     return (
         <div className="my-2">
-            {state.posts.length ? (
+            {state.posts ? (
                <div className="flex-row">
                 {filterPosts().map((post) => (
                     <PostItem 
