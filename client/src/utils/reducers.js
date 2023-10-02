@@ -8,7 +8,7 @@ export const reducer = (state, action) => {
         case LOAD_POST:
             return {
                 ...state,
-                post: [...action.post],
+                posts: [...action.posts],
             };
             
         default: 
