@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import GamePost from './pages/GamePost';
 import Login from './pages/login';
 import Signup from "./pages/signup";
-import Profile from './pages/profile';
+import Profile from './pages/profilepage';
 import Nav from "./components/Nav";
 
 const httpLink = createHttpLink({
