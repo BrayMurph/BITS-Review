@@ -1,2 +1,135 @@
-body,h1,h2,p{margin:0;padding:0}header{background-color:#111;color:#fff;padding:1rem;text-align:center}main{background-color:#222;padding:20px}.game{background-color:#333;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.2);overflow:hidden}.game-poster{max-width:100%;overflow:hidden;padding:10px;text-align:center}.game-info{color:#fff;padding:20px}.game-info h2{font-size:24px;font-weight:700;margin-bottom:10px}.game-review{color:#007bff;cursor:pointer;font-weight:700;margin-top:10px;text-decoration:underline}.game-review:hover{color:#c00}.custom-heading{color:red;font-size:36px;font-weight:700;margin-bottom:20px;text-align:center}.btn-primary{background-color:red;border-color:red;border-radius:5px;color:#fff;display:inline-block;font-weight:700;margin-top:20px;padding:10px 20px;text-decoration:none;transition:background-color .2s}.btn-primary:hover{background-color:#c00}@media screen and (max-width:768px){main{padding:10px}.game-poster{max-width:100%}.game-info h2{font-size:20px}.custom-heading{font-size:24px;margin-bottom:10px}}footer{background-color:#111;color:#fff;padding:10px;text-align:center}
-/*# sourceMappingURL=main.0d90e1d9.css.map*/
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  main {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+  }
+  
+  /* Game grid container */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Gap between games */
+    max-width: 1200px; /* Limit maximum width */
+  }
+  
+  .game {
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out; /* Add a smooth animation */
+    cursor: pointer;
+  }
+  
+  /* Style the game poster */
+  .game-poster {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out; /* Add a smooth animation */
+  }
+  
+  /* Add a hover effect for games */
+  .game:hover {
+    transform: scale(1.05); /* Enlarge the game on hover */
+  }
+  
+  /* Add a hover effect for game posters */
+  .game-poster:hover {
+    transform: scale(1.05); /* Enlarge the poster on hover */
+  }
+  
+  /* Style game information */
+  .game-info {
+    padding: 20px;
+    color: white;
+  }
+  
+  .game-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .game-review {
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  /* Change the color when hovered */
+  .game-review:hover {
+    color: #cc0000;
+  }
+  
+  /* Add your own styles */
+  .custom-heading {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Responsive styles for mobile devices */
+  @media screen and (max-width: 768px) {
+    /* Adjust styles for screens up to 768px wide */
+    main {
+      padding: 10px;
+    }
+  
+    .game-poster {
+      max-width: 100%;
+    }
+  
+    .game-info h2 {
+      font-size: 20px;
+    }
+  
+    .custom-heading {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Style the footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+    color: white;
+  }
