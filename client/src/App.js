@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-// import GamePost from './pages/GamePost';
+import GamePost from './pages/GamePost';
 import Login from './pages/login';
 import Signup from "./pages/signup";
 import Profile from './pages/profilepage';
@@ -59,10 +59,10 @@ function App() {
                             path="/profile"
                             element={<Profile />}
                         />
-                        {/* <Route 
+                        <Route 
                             path="/post/:id"
                             element={<GamePost />}
-                        /> */}
+                        />
                     </Routes>
                     </PostProvider>
                 </div>

@@ -56,6 +56,7 @@ function PostList() {
                         game_name={post.game_name}
                         avg_score={post.avg_score}
                         messages={post.messages}
+                        comments={post.comments}
                     />
                 ))}
                </div> 

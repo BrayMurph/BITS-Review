@@ -9,7 +9,8 @@ function PostItem(item) {
         avg_score,
         messages,
         image,
-        game_name
+        game_name,
+        comments
     } = item;
 
     return (
@@ -30,6 +31,7 @@ function PostItem(item) {
                 <h2>{game_name}</h2>
                 <p>{messages}</p>
                 <a>Score: {avg_score}</a>
+                <a>{comments}</a>
                 <div className="submit-review">
            <Link to={`/post/${_id}`}> Leave a Review </Link> 
            </div>
