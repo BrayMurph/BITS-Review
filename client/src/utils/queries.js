@@ -15,7 +15,7 @@ export const QUERY_USER = gql`
 
 export const QUERY_POST = gql`
     query getPosts($_id: ID!) {
-        posts(_id: $_id) {
+        post(_id: $_id) {
             _id
             avg_score
             messages

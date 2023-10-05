@@ -1,14 +1,15 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { User, Post, Comment } = require('../models');
 const {signToken} = require ('../utils/auth')
 const resolvers = {
   Query: {
-    user: async (_, { _id }) => {
-      try {
-        const user = await User.findByPk(_id);
+    user: async (parent, args, context) => {
+      if(context.user) {
+        const user = await User.findById(context.user._id);
         return user;
-      } catch (error) {
-        throw new Error(error.message);
       }
+        
+      throw new AuthenticationError('Not logged in');
     },
     posts: async (_, { comments }) => {
       try {
@@ -25,7 +26,7 @@ const resolvers = {
     },
     post: async (_, { _id }) => {
       try {
-        const post = await Post.findByPk(_id);
+        const post = await Post.findById(_id);
         return post;
       } catch (error) {
         throw new Error(error.message);
@@ -44,14 +45,24 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
-    addComment: async (parent, args) => {
-      try {
-        const comment = await Comment.create(args);
-        return comment ;
-      } catch (error) {
-        console.log(error)
-        throw new Error(error.message);
+    addComment: async (parent, { score, message }, context) => {
+      console.log(context);
+      if (context.user) {
+        const comment = new Comment({ score, message });
+
+        await User.findByIdAndUpdate(context.user._id, { $push: { comments: comment } });
+        
+        return comment;
       }
+
+      if (context.post) {
+        const comment = new Comment({ score, message });
+
+        await Post.findByIdAndUpdate(context.post._id, { $push: { comments: comment } });
+
+        return comment;
+      }
+      throw new AuthenticationError('Not logged in');
     },
     login: async (_, { username, password }) => {
       const user = await User.findOne({ username });
